@@ -138,6 +138,7 @@ namespace BezierCurve
                 canvas.Children.Add(line);
             }
 
+
             // Horizontal lines (Y-axis)
             for (double y = canvas.ActualHeight - 100; y >= 0; y -= 50) // Змінено крок на 50
             {
