@@ -8,7 +8,7 @@ namespace BezierCurve
 {
     internal class GeneralBazesCoefFactory : ICoefMatrixFactory
     {
-        private static long BinomCoefficient(long n, long k)
+        public static long BinomCoefficient(long n, long k)
         {
             if (k > n) { return 0; }
             if (n == k) { return 1; } // only one way to chose when n == k

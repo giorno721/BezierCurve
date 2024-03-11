@@ -13,7 +13,6 @@ namespace BezierCurve
         private Matrix<double> _coefMatrix;
         private Matrix<double> _pointMatrix;
 
-
         public BezierCurveClass(ICoefMatrixFactory coefMatrixFactory, IEnumerable<Point> controlPoints)
         {
             _coefMatrixFactory = coefMatrixFactory;
@@ -36,6 +35,8 @@ namespace BezierCurve
             var point = tVector.ToRowMatrix() * _coefMatrix * _pointMatrix;
             return new Point(point[0, 0], point[0, 1]);
         }
+
+        public Matrix<double> GetCoefMatrix() { return _coefMatrix; }
 
         public Matrix<double> CreatePointMatrix()
         {

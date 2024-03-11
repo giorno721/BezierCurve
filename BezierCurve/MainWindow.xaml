@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BezierCurve"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#FF007ACC"/>
@@ -46,15 +46,19 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBox Background="#e1ebfc" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="7" IsReadOnly="True" BorderBrush="AliceBlue" BorderThickness="1"></TextBox>
-        <Canvas x:Name="canvas" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="7"/>
-        <DataGrid  x:Name="PointsDataGrid" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False"  
-                IsReadOnly="True" SelectionMode="Single" SelectionUnit="Cell" BorderBrush="AliceBlue" BorderThickness="1">
+        <Canvas x:Name="MainCanvans" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="7"/>
+        <DataGrid  x:Name="PointsDataGrid" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" SelectionUnit="FullRow" BorderBrush="AliceBlue" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="X" Binding="{Binding X}" Width="*"/>
                 <DataGridTextColumn Header="Y" Binding="{Binding Y}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Style="{StaticResource CustomButtonStyle}"  Content="Намалювати нову криву" Grid.Row="2" Grid.Column="1" FontSize="18" Click="GenerateRandomBezierCurve"/>
+        <Button Style="{StaticResource CustomButtonStyle}" Height="30" Width="230"  Content="Намалювати нову криву" Grid.Row="2" Grid.Column="1" FontSize="18" Click="Button_Click" />
+        <Button Style="{StaticResource CustomButtonStyle}" Height="30" Width="230"  Content="Додати нову точку" Grid.Row="3" Grid.Column="1" FontSize="18" Click="AddNewPoint" />
+        <TextBox x:Name="xCoordinate" Width="100" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" FontSize="25" TextAlignment="Center"  BorderThickness="0.4"></TextBox>
+        <TextBox x:Name="YCoordinate" Width="100"  HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" FontSize="25" TextAlignment="Center" BorderThickness="0.4" ></TextBox>
+        <Button Style="{StaticResource CustomButtonStyle}" Height="30" Width="230"  Content="Протабулювати" Grid.Row="5" Grid.Column="1" FontSize="18" Click="TabulateClick" />
+        <Button Style="{StaticResource CustomButtonStyle}" Height="30" Width="230"  Content="Інформація про матрицю коеф" Grid.Row="6" Grid.Column="1" FontSize="15" Click="InformationClick" />
 
     </Grid>
 </Window>

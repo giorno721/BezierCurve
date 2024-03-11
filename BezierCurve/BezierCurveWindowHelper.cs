@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathNet.Numerics.LinearAlgebra.Complex;
+using MathNet.Numerics.LinearAlgebra;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +11,11 @@ namespace BezierCurve
 {
     internal class BezierCurveWindowHelper
     {
-        public static Point[] CalculatePoints(int numOfPoints, IEnumerable<Point> controlPoints)
+        public static (Point[], Matrix<double>) CalculatePoints(int numOfPoints, IEnumerable<Point> controlPoints)
         {
             return CalculatePoints(numOfPoints, controlPoints, 0, 1);
         }
-        public static Point[] CalculatePoints(int numOfPoints, IEnumerable<Point> controlPoints, double start, double end)
+        public static (Point[], Matrix<double>) CalculatePoints(int numOfPoints, IEnumerable<Point> controlPoints, double start, double end)
         {
             BezierCurveClass bezierCurve = new(new GeneralBazesCoefFactory(), controlPoints);
             var points = new Point[numOfPoints];
@@ -22,7 +24,7 @@ namespace BezierCurve
             {
                 points[i] = bezierCurve.GetPoint(start + i * step);
             }
-            return points;
+            return (points, bezierCurve.GetCoefMatrix());
         }
 
     }

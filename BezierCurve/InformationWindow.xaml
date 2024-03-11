@@ -1,0 +1,15 @@
+﻿<Window x:Class="BezierCurve.InformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BezierCurve"
+        mc:Ignorable="d"
+        Title="InformationWindow" Height="450" Width="800"  Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBox x:Name="ResultTextBlock" Height="300" VerticalScrollBarVisibility="Visible">
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
