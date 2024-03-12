@@ -32,7 +32,7 @@ namespace BezierCurve
         {
             InitializeComponent();
             Points = new ObservableCollection<Point>();
-            PointsDataGrid.ItemsSource = Points;
+            PointsDataGrid.ItemsSource = Points;        
             DataContext = this;
             Points.CollectionChanged += (sender, args) => FillCanvans();
             Inited = true;

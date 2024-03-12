@@ -19,7 +19,7 @@ namespace BezierCurve
             _controlPoints = controlPoints.ToList();
 
             var doubleMatrix = _coefMatrixFactory.CreateCoefMatrix(_controlPoints.Count);
-            _coefMatrix = Matrix<double>.Build.DenseOfArray(doubleMatrix);
+            _coefMatrix = Matrix<double>.Build.DenseOfArray(doubleMatrix);//щільна матриця з двовимірного масиву(для зберігання нульових елементів)
 
             _pointMatrix = CreatePointMatrix();
         }
@@ -32,8 +32,8 @@ namespace BezierCurve
                 tVector[i] = Math.Pow(t, i);
             }
 
-            var point = tVector.ToRowMatrix() * _coefMatrix * _pointMatrix;
-            return new Point(point[0, 0], point[0, 1]);
+            var point = tVector.ToRowMatrix() * _coefMatrix * _pointMatrix; //обчислення точки на кривій
+            return new Point(point[0, 0], point[0, 1]);// повертаємо точку
         }
 
         public Matrix<double> GetCoefMatrix() { return _coefMatrix; }
